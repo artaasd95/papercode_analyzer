@@ -1,0 +1,23 @@
+analyzepdf_task:
+  description: >
+    Analyze the provided pdf file, then understand them for further question asnwering
+  expected_output: >
+    A details summary of the pdf and also the main algorithm pseudo code for implementation seperated by each line and sector of
+    code, formula numbers, and line numbers
+  agent: pdfanalyzer_agent
+
+providecode_task:
+  description: >
+    After reading and understanding the exact algorithm and aslo the summary of the pdf provided by the pdfanalyzer_agent 
+    write the python code for the algorithm and implement it
+  expected_output: >
+    a detailed python code for the algorithm with precise implementation
+  agent: coding_agent
+
+describe_task:
+  description: >
+    After reading and understanding the summary and details provided by the analyzepdf task you have to precisely describe the algorithm,
+    and the intent of the paper
+  expected_output: >
+    a detailed explanation of the paper, algorithm and code
+  agent: descriptor_agent
