@@ -1,4 +1,4 @@
-# PapercodeAnalyzer Crew
+# PapercodeAnalyzer agentic RAG
 
 Welcome to the PapercodeAnalyzer Agentic RAG. 
 
