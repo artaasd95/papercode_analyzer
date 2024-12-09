@@ -71,7 +71,7 @@ def agents_team(pdf_path=None, session_id=None, user_id=None, arxiv_path=None, c
 			"Get the query or subject from the leader",
 			"Query the knowledgebase for detailed information",
 			"Provide accurate information for the leader",
-			
+
 
 		],
 		session_id=session_id,
@@ -136,6 +136,14 @@ def agents_team(pdf_path=None, session_id=None, user_id=None, arxiv_path=None, c
 		description="You the head of a team that find, analyze academic papers,"+\
 		"read them and find the code of them or even provide code",
 		instructions=[
+			"You have recieved a subject or a pdf file probabily, if so, use the Paper reader agent to read pdf, summarize them"+\
+				"and add them to the agent knowledgebase",
+			"If any subject, or arxiv url provided use the Arxiv analyzer agent to find related papers and also read them "+\
+			"and add them to the agent's knowledgebase",
+			"Now if any query provided, search the facts to answer the query",
+			"If a path of code provided search the code path to analyze the code using the code analyzer agent",
+			"If no path provided also search the code analyzer agent to find any related code",
+			"try to answer the user question based on the facts"
 
 		],
 		session_id=session_id,
