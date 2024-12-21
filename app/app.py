@@ -1,13 +1,25 @@
-from Agents import agents_team
+from app.Agents import agents_team
 import uuid
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.responses import JSONResponse
+import uuid
+from typing import Optional
+from pydantic import BaseModel
 
+
+teams = dict()
 
 
 app = FastAPI()
 
-@app.post("/query/")
+class QueryRequest(BaseModel):
+    query: str
+    pdf_path: Optional[str] = None
+    arxiv_path: Optional[str] = None
+    code_path: Optional[str] = None
+
+
+@app.post("/query")
 async def process_data(request: Request):
 	request_body = await request.json()
 	try:
@@ -33,8 +45,12 @@ async def process_data(request: Request):
 	session_id = str(uuid.uuid4)
 	user_id = str(uuid.uuid4)
 
-	leader = agents_team(pdf_path, session_id, user_id, arxiv_path, code_path)
+	if session_id not in teams.keys():
+		leader = agents_team(pdf_path, session_id, user_id, arxiv_path, code_path)
+		teams[session_id] = leader
+	else:
+		leader = teams[session_id]
 
-	
+	response = leader.run_query(query)
 
-	return JSONResponse()
+	return JSONResponse(content={"answer": response})

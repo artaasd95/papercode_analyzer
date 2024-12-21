@@ -38,7 +38,7 @@ def agents_team(pdf_path=None, session_id=None, user_id=None, arxiv_path=None, c
 	model = Groq(id="llama3-groq-70b-8192")
 	#model=OpenAIChat(id="gpt-4o")
 
-	db_url="postgresql+psycopg://ai:ai@localhost:5532/ai"
+	db_url="postgresql+psycopg://ai:ai@localhost:5432/ai"
 	paper_pdf_storage = PgAgentStorage(table_name="paper_pdf_sessions", db_url=db_url)
 	arxiv_storage = PgAgentStorage(table_name="arxiv_sessions", db_url=db_url)
 	code_analyzer_storage = PgAgentStorage(table_name="code_analyzer_sessions", db_url=db_url)
