@@ -1,4 +1,4 @@
-from app.Agents import agents_team
+from Agents import agents_team
 import uuid
 from fastapi import FastAPI, HTTPException, Request
 from fastapi.responses import JSONResponse
